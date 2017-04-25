@@ -1,0 +1,17 @@
+# Jetbrains editors
+.idea
+
+# JS Doc
+jsdoc
+
+# Coverage Reports
+coverage
+
+# Node Modules
+node_modules
+
+# Downloaded Libraries to avoid CDN
+public/libs
+
+# Mac DS-Store
+.DS_Store
