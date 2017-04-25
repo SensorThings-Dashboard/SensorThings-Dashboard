@@ -2,7 +2,7 @@
 
 # Introduction
 
-This dashboard provides easy-to-use client-side visualisation of Internet-of-Things Sensordata from [OGC SensorThings API](https://github.com/opengeospatial/sensorthings) compatible servers. Various types of widgets can be arranged and configured on the dashboard. It is a Web-application and can be embedded into any website. 
+This dashboard provides easy-to-use client-side visualisation of Internet-of-Things sensor data from [OGC SensorThings API](https://github.com/opengeospatial/sensorthings) compatible servers. Various types of widgets can be arranged and configured on the dashboard. It is a web application and can be embedded into any website. 
 
 **Authors:** Simon Böhm, Moritz Grauer, Daniel Liebler, Robin Maisch, Till Stöckmann, Frederic Tausch
 
@@ -13,13 +13,13 @@ This dashboard provides easy-to-use client-side visualisation of Internet-of-Thi
 
 # How to use
 
-A demo of an integration of this dashboard can be found in the [public](https://github.com/IoT-WebDashboard/IoT-WebDashboard) folder. You will still need to install RGraph for this to work!
+A demo of an integration of this dashboard can be found in the [public](https://github.com/IoT-WebDashboard/IoT-WebDashboard) folder. The RGraph libraries will still be needed for it to work!
 
-You need following files:
+You need the following files:
  - [*iotwebdashboard.js*](https://github.com/IoT-WebDashboard/IoT-WebDashboard) | The code for the dashboard
  - [*iotwebdashboard.css*](https://github.com/IoT-WebDashboard/IoT-WebDashboard) | The style files for the dashboard
  
-The two files can be found in a release version in the [public](https://github.com/IoT-WebDashboard/IoT-WebDashboard) folder. They have to be imported into the host website, after importing the dependencies. 
+These two files can be found in a release version in the [public](https://github.com/IoT-WebDashboard/IoT-WebDashboard) folder. They have to be imported into the host website after importing the dependencies. 
 
 ## Needed Dependencies ##
 
@@ -31,7 +31,7 @@ The two files can be found in a release version in the [public](https://github.c
  - [Leaflet](http://leafletjs.com/)
  - [MQTT.js](https://www.npmjs.com/package/mqtt)
  
- As you can see in the demo, there are CDNs for everything for everything except RGraph. You will have to download and serve this yourself.
+As you can see in the demo, there are CDNs for every dependency except RGraph. You will have to download and serve this yourself.
 
 # Development
 
@@ -52,29 +52,29 @@ npm install
 
 ## Run the Project
 
-To cross-compile and test your project run
+To cross-compile and test your project, run
 ```sh
 gulp test
 ```
 
-To start your server run:
+To start your server, run:
 ```sh
 gulp server
 ```
 
-You can reach the server by the URL http://localhost:8080/webpack-dev-server/public/index.html
-The URL has to be opened by a browser with single origin policy disabled or you will not be able to get data from other SensorThings-servers.
+You can reach the server at the URL http://localhost:8080/webpack-dev-server/public/index.html
+The URL has to be opened in a browser with single origin policy disabled. Otherwise, you will not be able to get data from multiple SensorThings API servers.
 
 ### Windows (Chrome)
-stop all chrome processes.(Go to the Taskmanager. Closing all chrome windows isn't enough.)
+Stop all Chrome processes. (Use the task manager. Closing all Chrome windows is not sufficient.)
 
-go to the folder chrome.exe is located and run:
+Go to the directory that contains chrome.exe and run:
 ```sh
 chrome.exe --disable-web-security --allow-file-access-from-files --user-data-dir="C:/Chrome"
 ```
 
 ### OSX (Chrome)
-stop all chrome processes, then run: 
+Stop all Chrome processes, then run: 
 
 ```sh
 open -a "Google Chrome.app" --args --disable-web-security --allow-file-access-from-files --user-data-dir
@@ -87,15 +87,15 @@ chromium-browser --disable-web-security --user-data-dir
 
 ## Creating the Documentation for this dashboard (JSDOC)
 
-To install jsdoc globally:
+To install jsdoc globally, run
 ```sh
 npm install -g jsdoc
 ```
 
-after that, create the jsdoc. While in directory ./Implementierung, either run createJSDOC.bat or:
+After that, create the jsdoc. While in directory ./Implementierung, either run createJSDOC.bat or:
 ```sh
 jsdoc -r -d ./jsdoc ./src/
 ```
 
-now you can open the start page of the JSDOC. It is located in:
+Now you are ready to open the start page of the jsdoc. It is located in:
 ./Implementierung/jsdoc/index.html
