@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>IoT-WebDashboard</title>
+
+    <!-- Import jQuery -->
+    <script src="libs/jquery.min.js"></script>
+    <script src="libs/jquery-ui.min.js"></script>
+    <link href="libs/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+    <!-- Import Bootstrap -->
+    <link href="libs/bootstrap.min.css" rel="stylesheet">
+    <script src="libs/bootstrap.min.js"></script>
+
+    <!-- Import gridstack -->
+    <script src="libs/lodash.min.js"></script>
+
+    <!-- Need for touch devices, exclude for now -->
+    <!-- <script src="jquery.ui.touch-punch.min.js"></script> -->
+    <link href="libs/gridstack.min.css" rel="stylesheet"/>
+    <script src="libs/gridstack.min.js"></script>
+    <script src="libs/gridstack.jQueryUI.min.js"></script>
+
+    <!-- Import RGraph -->
+    <script src="libs/RGraph.common.core.js"></script>
+    <script src="libs/RGraph.gauge.js"></script>
+    <script src="libs/RGraph.scatter.js"></script>
+    <script src="libs/RGraph.line.js"></script>
+    <script src="libs/RGraph.thermometer.js"></script>
+    <script src="libs/RGraph.bar.js"></script>
+
+    <!-- Dependencies Leaflet -->
+    <link href="libs/leaflet.css" rel="stylesheet">
+    <script src="libs/leaflet.js"></script>
+
+    <!-- Import MQTT.js -->
+    <script src="libs/mqtt.min.js"></script>
+
+    <!-- Import IoT-WebDashboard -->
+    <script src="../dist/preload.bundle.js"></script>
+    <link href="iotwebdashboard.css" id="stylesheet" rel="stylesheet">
+</head>
+
+<body>
+<h1>Host Seite</h1>
+<!-- We will plot the dashboard into this div -->
+<div id="iot-db">
+    <h3 id="headliner">IoT-WebDashboard</h3>
+    <p>
+        loading...
+    </p>
+</div>
+
+<script>
+    iotDB = window.iotDB;
+    iotDB.onLoad = function () {
+        //Import userConfig here
+        /*$.getJSON(path, config =>
+            iotDB.importUserConfigJSON(config)
+        );*/
+    };
+    iotDB.onSaveConfig = function () {
+        var userConfig = iotDB.exportUserConfig();
+
+        //Save the config to CMS here
+    };
+    iotDB.onLoadConfig = function () {
+        //Get to user config here
+        iotDB.importUserConfig(userConfig);
+    };
+    iotDB.create({
+        "id": "iot-db",
+        "disableImportExportCMS": false,
+        "disableDownloadUpload": false,
+        "disableConfiguration": false,
+        "backgroundTransparent": false,
+        "enableNoDistraction": false,
+        "baseDir": "./",
+        "language": "en"
+    });
+</script>
+</body>

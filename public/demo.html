@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>IoT-WebDashboard</title>
+
+    <!-- Import jQuery -->
+
+    <script
+			  src="https://code.jquery.com/jquery-3.2.1.min.js"
+			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			  crossorigin="anonymous"></script>
+    <script
+			  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+			  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+			  crossorigin="anonymous"></script>
+
+
+    <!-- Import Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Import Lodash (Needed for gridstack) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+
+    <!-- Import gridstack -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.2.6/gridstack.min.css" />
+    <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.2.6/gridstack.min.js'></script>
+
+    <!-- Import RGraph -->
+    <script src="libs/RGraph.common.core.js"></script>
+    <script src="libs/RGraph.gauge.js"></script>
+    <script src="libs/RGraph.scatter.js"></script>
+    <script src="libs/RGraph.line.js"></script>
+    <script src="libs/RGraph.thermometer.js"></script>
+    <script src="libs/RGraph.bar.js"></script>
+
+    <!-- Import Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+
+    <!-- Import MQTT.js -->
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+
+    <!-- Import IoT-WebDashboard -->
+    <script src="iotwebdashboard.js"></script>
+    <link href="iotwebdashboard.css" id="stylesheet" rel="stylesheet">
+</head>
+
+<body>
+<h1>Host Seite</h1>
+<!-- We will plot the dashboard into this div -->
+<div id="iot-db">
+    <h3 id="headliner">IoT-WebDashboard</h3>
+    <p>
+        loading...
+    </p>
+</div>
+
+<script>
+    iotDB = window.iotDB;
+    iotDB.onLoad = function () {
+        //Import userConfig here
+    };
+    iotDB.onSaveConfig = function () {
+        var userConfig = iotDB.exportUserConfig();
+        //Save the config to CMS here
+    };
+    iotDB.onLoadConfig = function () {
+        //Get to user config here
+        iotDB.importUserConfig(userConfig);
+    };
+    iotDB.create({
+        "id": "iot-db",
+        "disableImportExportCMS": false,
+        "disableDownloadUpload": false,
+        "disableConfiguration": false,
+        "backgroundTransparent": false,
+        "enableNoDistraction": false,
+        "baseDir": "./",
+        "language": "en"
+    });
+</script>
+</body>

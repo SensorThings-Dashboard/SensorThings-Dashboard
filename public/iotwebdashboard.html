@@ -1,0 +1,96 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <!--The header of the navbar-->
+        <div class="navbar-header">
+            <div id="iotdbHeaderTitle" class="navbar-brand">
+                Dashboard: Default
+            </div>
+        </div>
+
+        <!--The right side of the navbar-->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <button id="btn-no-distraction" class="btn btn-sm btn-default">
+
+                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                </button>
+                <button id="btn-configure" class="btn btn-primary navbar-btn">Configure</button>
+
+                <button type="button" class="btn btn-primary navbar-btn dropdown-toggle" id="addwidget_dropdown"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Add Widget <span class="caret"></span></button>
+                <ul class="dropdown-menu" id="addwidget_dropdown_menu">
+                    <!-- Items are to be inserted by View. -->
+                </ul>
+
+            </ul>
+        </div>
+
+    </div>
+
+</nav>
+
+<div class="grid-stack-container">
+    <!-- The actual grid and widgets will be put in here -->
+    <div class="grid-stack"></div>
+</div>
+
+<!-- Dashboard Config View -->
+<div id="configure" class="conf-popup">
+    <div class="conf-content resizable">
+        <div class="conf-header">
+            <span id="conf_title" class="conf-title">Configure $TITLE</span>
+            <span id="conf_close" class="conf-close close">&times;</span>
+        </div>
+        <div class="conf-inner">
+            <table>
+                <tbody>
+                <tr>
+                    <td><span class="conf-label" id="conf-label-title">Title: </span></td>
+                    <td><input class="conf-input" id="conf-input-title" type="text"></td>
+                </tr>
+                <tr>
+                    <td><span class="conf-label" id="conf-label-servers">Server List: </span></td>
+                    <td>
+                        <table>
+                            <tbody class="conf-server-table">
+                            <!-- Servers are inserted by View -->
+                            </tbody>
+                        </table>
+
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="conf-footer">
+            <button id="conf_save" type="button" class="btn btn-primary conf-btn-save">Apply</button>
+            <button id="conf_upload" type="button" class="btn btn-primary conf-btn-save">Upload Config</button>
+            <button id="conf_download" type="button" class="btn btn-primary conf-btn-save">Download Config</button>
+            <button id="conf_import" type="button" class="btn btn-primary conf-btn-save">Import Config from CMS</button>
+            <button id="conf_export" type="button" class="btn btn-primary conf-btn-save">Export Config to CMS</button>
+            <a id="downloadAnchorElem" style="display:none"></a>
+        </div>
+    </div>
+</div>
+
+<!-- Widget Configuration View -->
+<div id="configureWidget" class="conf-popup">
+    <div class="conf-content">
+        <div class="conf-header">
+            <span id="widget_conf_title" class="conf-title">Configure $TITLE</span>
+            <span id="widget_conf_close" class="conf-close close">&times;</span>
+        </div>
+        <div id="widget_conf_inner" class="conf-inner">
+            <table class="table table-striped">
+                <tbody id="widget_conf_table" class="conf-table">
+                </tbody>
+            </table>
+        </div>
+        <div class="conf-footer">
+            <button id="widget_conf_save" accesskey="a" type="button" class="btn btn-primary conf-btn-save">Apply
+            </button>
+        </div>
+    </div>
+</div>
