@@ -1,3 +1,5 @@
+![IoT-Web-Dashboard-Banner](doc/img/IoT-WebDashboard-Banner.jpg)
+
 # Introduction
 
 This dashboard provides easy-to-use client-side visualisation of Internet-of-Things Sensordata from [OGC SensorThings API](https://github.com/opengeospatial/sensorthings) compatible servers. Various types of widgets can be arranged and configured on the dashboard. It is a Web-application and can be embedded into any website. 
