@@ -13,18 +13,20 @@ This dashboard provides easy-to-use client-side visualisation of Internet-of-Thi
 
 # How to use
 
-A demo of an integration of this dashboard can be found in the [public](https://github.com/IoT-WebDashboard/IoT-WebDashboard) folder. The RGraph libraries will still be needed for it to work!
+A demo of an integration of this dashboard can be found in the [public](https://github.com/IoT-WebDashboard/IoT-WebDashboard) folder. You will still need to download RGraph for this to work (more on this later)!
 
-You need the following files:
+You need following files and folders:
  - [*iotwebdashboard.js*](https://github.com/IoT-WebDashboard/IoT-WebDashboard) | The code for the dashboard
  - [*iotwebdashboard.css*](https://github.com/IoT-WebDashboard/IoT-WebDashboard) | The style files for the dashboard
+ - [*res*](https://github.com/IoT-WebDashboard/IoT-WebDashboard) | The folder containing all images used by the dashboard
+ - [*fonts*](https://github.com/IoT-WebDashboard/IoT-WebDashboard) | The folder containing all fonts used by the dashboard. (Not needed if included in your embedded bootstrap)
  
 These two files can be found in a release version in the [public](https://github.com/IoT-WebDashboard/IoT-WebDashboard) folder. They have to be imported into the host website after importing the dependencies. 
 
 ## Needed Dependencies ##
 
- - jQuery & jQueryUI 
- - Bootstrap (CSS & JS)
+ - [jQuery & jQueryUI](https://jquery.com) 
+ - [Bootstrap](https://getbootstrap.com) (CSS & JS)
  - [Gridstack](https://github.com/troolee/gridstack.js)
  - [lodash](https://lodash.com/) (Needed for Gridstack)
  - [RGraph](https://www.rgraph.net/) (At least common.core, gauge, scatter, line, thermometer, bar)
@@ -33,69 +35,22 @@ These two files can be found in a release version in the [public](https://github
  
 As you can see in the demo, there are CDNs for every dependency except RGraph. You will have to download and serve this yourself.
 
-# Development
+## Embedding the dashboard ##
 
-## Getting started ##
+The dashboard is accessed via the `window.iotDB` variable. 
 
-### Install the `gulp` command
-These instructions require node.js and npm
+This variable provides the following functions:
+- `create(Object)`: The function to instanciate the dashboard. There should only be one dashboard instance per site. The passed Object can have the following attributes:
+    - (required) String `id`: The id of the div tag the dashboard should be created into. The dimensions of the div will not be changed
+    - Boolean `disableImportExportCMS`: Disable the user's ability to import/export his dashboard-configuration from/into a CMS
+    - Boolean `disableDownloadUpload`: Disable the user's ability to download/upload his dashboard-configuration to/from his local PC
+    - Boolean `disableConfiguration`: Disable the user's ability to change the dashboard (including servers, widgets and their placement)
+    - Boolean `backgroundTransparent`: Set the background transparent
+    - Boolean `enableNoDistraction`: Enable the "no distraction"-mode on startup (removing every part of the dashboard GUI except the widgets)
+    - String `baseDir`: The directory to fetch the resources from (*fonts* and *res* folder). Root is the folder of the script
+    - String `language`: The language file to be used. Defaults to english. If you want a different language, set up a language file in the public scope with the name passed here. For all missing translations, the english translations will be used. Look at the english language file for all the translations needed
+- `onLoad(function)`: The function to be called once the dashboard is all started up
+- `onSaveConfig(function)`: The function to be called once the user presses the export button. Here you should export the user's dashboard-config into your CMS
+- `onLoadConfig(function)`: The function to be called once the user presses the import button. Here you should import the user's dashboard-config from your CMS
 
-```sh
-npm install --global gulp-cli
-```
-
-### Install needed development dependencies
-
-```sh
-npm install
-```
-
-## Run the Project
-
-To cross-compile and test your project, run
-```sh
-gulp test
-```
-
-To start your server, run:
-```sh
-gulp server
-```
-
-You can reach the server at the URL http://localhost:8080/webpack-dev-server/public/index.html
-The URL has to be opened in a browser with single origin policy disabled. Otherwise, you will not be able to get data from multiple SensorThings API servers.
-
-### Windows (Chrome)
-Stop all Chrome processes. (Use the task manager. Closing all Chrome windows is not sufficient.)
-
-Go to the directory that contains chrome.exe and run:
-```sh
-chrome.exe --disable-web-security --allow-file-access-from-files --user-data-dir="C:/Chrome"
-```
-
-### OSX (Chrome)
-Stop all Chrome processes, then run: 
-
-```sh
-open -a "Google Chrome.app" --args --disable-web-security --allow-file-access-from-files --user-data-dir
-```
-
-### Linux (Chromium)
-```sh
-chromium-browser --disable-web-security --user-data-dir
-```
-
-## Creating the Documentation for this dashboard (JSDOC)
-
-To install jsdoc globally, run
-```sh
-npm install -g jsdoc
-```
-
-After that, create the jsdoc. While in directory ./Implementierung, either run createJSDOC.bat or:
-```sh
-jsdoc -r -d ./jsdoc ./src/
-```
-
-Now you are ready to open the start page of the jsdoc. It is located in:
-./Implementierung/jsdoc/index.html
+# [Development](https://github.com/IoT-WebDashboard/IoT-WebDashboard) #
