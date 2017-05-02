@@ -2,7 +2,8 @@
 
 # Introduction
 
-This dashboard provides easy-to-use client-side visualisation of Internet-of-Things sensor data from [OGC SensorThings API](https://github.com/opengeospatial/sensorthings) compatible servers. Various types of widgets can be arranged and configured on the dashboard. It is a web application and can be embedded into any website. 
+This dashboard provides easy-to-use client-side visualisation of Internet-of-Things sensor data from [OGC SensorThings API](https://github.com/opengeospatial/sensorthings) compatible servers. Various types of widgets can be arranged and configured on the dashboard. It is a web application and can be embedded into any website.
+A live demo is available on the [project page](https://sensorthings-dashboard.github.io/).
 
 **Authors:** Simon Böhm, Moritz Grauer, Daniel Liebler, Robin Maisch, Till Stöckmann, Frederic Tausch
 
@@ -20,24 +21,24 @@ You need following files and folders:
  - *iotwebdashboard.css* | The style files for the dashboard
  - *res* | The folder containing all images used by the dashboard
  - *fonts* | The folder containing all glyphicons used by the dashboard. (Not needed if included in your embedded bootstrap)
- 
-Those files and folders can be found in a release version in the [public](https://github.com/IoT-WebDashboard/IoT-WebDashboard/tree/master/public) folder. The script has to be imported into the host website after importing the dependencies. 
+
+Those files and folders can be found in a release version in the [public](https://github.com/IoT-WebDashboard/IoT-WebDashboard/tree/master/public) folder. The script has to be imported into the host website after importing the dependencies.
 
 ## Needed Dependencies ##
 
- - [jQuery & jQueryUI](https://jquery.com) 
+ - [jQuery & jQueryUI](https://jquery.com)
  - [Bootstrap](https://getbootstrap.com) (CSS & JS)
  - [Gridstack](https://github.com/troolee/gridstack.js)
  - [lodash](https://lodash.com/) (Needed for Gridstack)
  - [RGraph](https://www.rgraph.net/) (At least common.core, gauge, scatter, line, thermometer, bar)
  - [Leaflet](http://leafletjs.com/)
  - [MQTT.js](https://www.npmjs.com/package/mqtt)
- 
+
 As you can see in the demo, there are CDNs for every dependency except RGraph. You will have to download and serve this yourself.
 
 ## Embedding the dashboard ##
 
-The dashboard is accessed via the `window.iotDB` variable. 
+The dashboard is accessed via the `window.iotDB` variable.
 
 This variable provides the following functions:
 - `create(Object)`: The function to instanciate the dashboard. There should only be one dashboard instance per site. The passed Object can have the following attributes:
