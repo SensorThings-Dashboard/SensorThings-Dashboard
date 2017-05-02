@@ -7412,7 +7412,7 @@
 	         * converts a value & unit combination of a timeinterval to a count of milliseconds
 	         * @param {int} value the count of <units>
 	         * @param {int} unit_const the constant for a timeunit
-	         * @return {int} the count of milliseconds 
+	         * @return {int} the count of milliseconds
 	         */
 	        value: function _getMilliseconds(value, unit_const) {
 	            switch (unit_const) {
@@ -7560,7 +7560,7 @@
 
 	/**
 	 * manages DataQuerySynchronizing
-	 * 
+	 *
 	 * This class has the following properties:
 	 * syncFreq                     -- the frequency with which the DataObserver works
 	 * queryIDcounter               -- the QueryID counter
@@ -7569,7 +7569,7 @@
 	 * myTimer                      -- the timer to start new querying batches
 	 * mySensorThingsCommunication  --reference to SensorThingsCommunications
 	 * myDataQuerySynchronizing     --reference to DataQuerySynchronizing
-	 * 
+	 *
 	 */
 
 	var DataObserver = (function () {
@@ -7684,7 +7684,7 @@
 	            return this.syncFreq;
 	        }
 
-	        /** 
+	        /**
 	         * performs one sync of the currently "expired" Data
 	         * @private
 	         */
@@ -7733,7 +7733,7 @@
 
 	var logging = false;
 
-	/** 
+	/**
 	 * Synchronizes the Queries to the SensorThingsServer to prevent unneccesary Traffic.
 	 *
 	 * This class has the following properties:
@@ -7802,7 +7802,7 @@
 	        /**
 	         * add the missing Parameters to the ParameterList
 	         * @params params {Array} the parameterList to autocomplete
-	         * @returns {Array} the completed parameterList 
+	         * @returns {Array} the completed parameterList
 	         * @private
 	         */
 	    }, {
@@ -8381,7 +8381,7 @@
 /* 34 */
 /***/ function(module, exports) {
 
-	/** 
+	/**
 	 * a Query which only generates random Data.
 	 * only for internal & testing purposes
 	 *
@@ -8389,7 +8389,7 @@
 	 * interval         -- the Time between 2 Querys
 	 * lastCalled       -- the Time since Jan,1,1970 of the last Query
 	 * callback         -- the Callback to write the Data
-	 * 
+	 *
 	 */
 	"use strict";
 
@@ -8403,7 +8403,7 @@
 
 	var RandomDataQuery = (function () {
 
-	    /** 
+	    /**
 	     * @param myParameterMap the ParameterMap
 	     * @param myCallback the callback to refresh the Data in the Datamodel
 	     */
@@ -8840,7 +8840,7 @@
 	            this.title = "Dashboard: " + window.iotlg.headerDefTitle;
 	            this.serverList = [{
 	                name: "Standard",
-	                url: "http://35.162.114.82:8080/SensorThingsServer-1.0/v1.0/"
+	                url: "http://scratchpad.sensorup.com/OGCSensorThings/v1.0/"
 	            }];
 	            this._relative = false;
 	            this._absoluteLimit = 1000;

@@ -19,7 +19,7 @@ export class DashboardConfig {
             this.title = "Dashboard: " + window.iotlg.headerDefTitle;
             this.serverList = [{
                 name: "Standard",
-                url: "http://35.162.114.82:8080/SensorThingsServer-1.0/v1.0/"
+                url: "http://scratchpad.sensorup.com/OGCSensorThings/v1.0/"
             }];
             this._relative = false;
             this._absoluteLimit = 1000;
