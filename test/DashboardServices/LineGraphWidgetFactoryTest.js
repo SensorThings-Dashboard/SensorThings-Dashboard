@@ -101,6 +101,10 @@ describe("LineGraphWidgetFactory test", () => {
                 data: 'New 9gag memes',
                 type: TYPE_STRING
             },
+            ymin: {
+                data: 0,
+                type: TYPE_NUMBER
+            },
             pointColor: {
                 data: '#000000',
                 type: TYPE_COLOR
