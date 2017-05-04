@@ -15,3 +15,7 @@ public/libs
 
 # Mac DS-Store
 .DS_Store
+
+# Build directories
+target/
+dist/
