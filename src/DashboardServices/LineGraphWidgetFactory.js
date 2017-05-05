@@ -428,10 +428,15 @@ export class LineGraphWidgetFactory {
                     labelTicks = this._calcLabelTicks(new Date(min), new Date(max), steps);
                 }
 
+                if (config.ymin === undefined) {
+                    config.ymin = {data:0, type:0};
+                }
+
                 color = config.pointColor.data;
                 configurableOptions = {
                     xmin: min,
                     xmax: max,
+                    ymin: config.ymin.data,
                     backgroundGridBorder: config.backgroundGridBorder.data,
                     backgroundGridVlines: config.backgroundGridVlines.data,
                     backgroundBarcolor1: config.backgroundBarcolor1.data,

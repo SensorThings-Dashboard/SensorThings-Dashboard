@@ -113,12 +113,16 @@ export class LineGraphWidgetData {
             },
 
             titleXaxis: {
-                data: 'Time in sec',
+                data: 'Time',
                 type: TYPE_STRING
             },
             titleYaxis: {
-                data: 'New 9gag memes',
+                data: 'Y-Axis',
                 type: TYPE_STRING
+            },
+            ymin: {
+                data: 0,
+                type: TYPE_NUMBER
             },
             pointColor: {
                 data: '#000000',

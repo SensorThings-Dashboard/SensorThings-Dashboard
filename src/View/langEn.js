@@ -95,6 +95,7 @@ export var en = {
     "titleXaxis_Tooltip": "Title on the X Axis",
     "titleYaxis_Tooltip": "Title on the Y Axis",
     "pointColor_Tooltip": "Color of the Points to draw",
+    "ymin_Tooltip": "Minimum value on the Y Axis",
 
     //PlainDataWidget
     "valueSize_Tooltip": "Fontsize of the Value",
