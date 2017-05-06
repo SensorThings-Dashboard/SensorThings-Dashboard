@@ -1,5 +1,7 @@
 # Development #
 
+Development is done against master, release code can be found in the [public](https://github.com/IoT-WebDashboard/IoT-WebDashboard/tree/master/public) folder.
+
 ## Getting started ##
 
 ### Install the `gulp` command
@@ -13,6 +15,13 @@ npm install --global gulp-cli
 
 ```sh
 npm install
+```
+
+### Code formatting
+Code formating is done with [js-beautify](https://www.npmjs.com/package/js-beautify) with it default config. To install run
+
+```sh
+npm install js-beautify
 ```
 
 ## Run the Project
