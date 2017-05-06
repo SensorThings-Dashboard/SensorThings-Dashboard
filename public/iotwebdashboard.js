@@ -42,7 +42,7 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -107,7 +107,7 @@
 	        if (cf.language == null) {
 	            cf.language = "en";
 	        }
-
+	        cf.id = "iot-db";
 	        new _ViewViewJs.View(cf.id, cf.backgroundTransparent, cf.disableConfiguration, cf.disableImportExportCMS, cf.disableDownloadUpload, cf.enableNoDistraction, cf.language, window.iotDB.onLoad);
 
 	        if (cf.baseDir) {
@@ -152,9 +152,9 @@
 	    }
 	};
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -366,9 +366,9 @@
 
 	exports.DataModelProxy = DataModelProxy;
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -459,9 +459,9 @@
 
 	exports.DataModel = DataModel;
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -580,9 +580,9 @@
 
 	exports.UserConfig = UserConfig;
 
-/***/ },
+/***/ }),
 /* 4 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -742,9 +742,9 @@
 
 	exports.WidgetConfig = WidgetConfig;
 
-/***/ },
+/***/ }),
 /* 5 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -1211,9 +1211,9 @@
 
 	exports.MapWidgetData = MapWidgetData;
 
-/***/ },
+/***/ }),
 /* 6 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -1641,9 +1641,9 @@
 
 	exports.View = View;
 
-/***/ },
+/***/ }),
 /* 7 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 
@@ -1746,6 +1746,7 @@
 	    "titleXaxis_Tooltip": "Title on the X Axis",
 	    "titleYaxis_Tooltip": "Title on the Y Axis",
 	    "pointColor_Tooltip": "Color of the Points to draw",
+	    "ymin_Tooltip": "Minimum value on the Y Axis",
 
 	    //PlainDataWidget
 	    "valueSize_Tooltip": "Fontsize of the Value",
@@ -1772,9 +1773,9 @@
 	};
 	exports.en = en;
 
-/***/ },
+/***/ }),
 /* 8 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -1953,9 +1954,9 @@
 
 	exports.UserEvents = UserEvents;
 
-/***/ },
+/***/ }),
 /* 9 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -2129,9 +2130,9 @@
 
 	exports.DashboardServices = DashboardServices;
 
-/***/ },
+/***/ }),
 /* 10 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -2285,9 +2286,9 @@
 
 	exports.WidgetFactory = WidgetFactory;
 
-/***/ },
+/***/ }),
 /* 11 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -2562,9 +2563,9 @@
 
 	exports.GaugeWidgetFactory = GaugeWidgetFactory;
 
-/***/ },
+/***/ }),
 /* 12 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -3012,10 +3013,15 @@
 	                        labelTicks = _this._calcLabelTicks(new Date(min), new Date(max), steps);
 	                    }
 
+	                    if (config.ymin === undefined) {
+	                        config.ymin = { data: 0, type: 0 };
+	                    }
+
 	                    color = config.pointColor.data;
 	                    configurableOptions = {
 	                        xmin: min,
 	                        xmax: max,
+	                        ymin: config.ymin.data,
 	                        backgroundGridBorder: config.backgroundGridBorder.data,
 	                        backgroundGridVlines: config.backgroundGridVlines.data,
 	                        backgroundBarcolor1: config.backgroundBarcolor1.data,
@@ -3070,9 +3076,9 @@
 
 	exports.LineGraphWidgetFactory = LineGraphWidgetFactory;
 
-/***/ },
+/***/ }),
 /* 13 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -3466,9 +3472,9 @@
 
 	exports.MapWidgetFactory = MapWidgetFactory;
 
-/***/ },
+/***/ }),
 /* 14 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -3638,9 +3644,9 @@
 
 	exports.PlainDataWidgetFactory = PlainDataWidgetFactory;
 
-/***/ },
+/***/ }),
 /* 15 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -3774,9 +3780,9 @@
 
 	exports.PlainTextWidgetFactory = PlainTextWidgetFactory;
 
-/***/ },
+/***/ }),
 /* 16 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -4043,9 +4049,9 @@
 
 	exports.ThermometerWidgetFactory = ThermometerWidgetFactory;
 
-/***/ },
+/***/ }),
 /* 17 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -4246,9 +4252,9 @@
 
 	exports.TrafficLightWidgetFactory = TrafficLightWidgetFactory;
 
-/***/ },
+/***/ }),
 /* 18 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -4856,9 +4862,9 @@
 
 	exports.BarGraphWidgetFactory = BarGraphWidgetFactory;
 
-/***/ },
+/***/ }),
 /* 19 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -5186,9 +5192,9 @@
 
 	exports.WidgetConfigurationView = WidgetConfigurationView;
 
-/***/ },
+/***/ }),
 /* 20 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -5696,9 +5702,9 @@
 
 	exports.ConfigTableRowFactory = ConfigTableRowFactory;
 
-/***/ },
+/***/ }),
 /* 21 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -5902,9 +5908,9 @@
 
 	exports.SensorThingsCommunications = SensorThingsCommunications;
 
-/***/ },
+/***/ }),
 /* 22 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -6019,9 +6025,9 @@
 
 	exports.ServerQuery = ServerQuery;
 
-/***/ },
+/***/ }),
 /* 23 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -6517,9 +6523,9 @@
 
 	exports.STParser = STParser;
 
-/***/ },
+/***/ }),
 /* 24 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -6659,9 +6665,9 @@
 
 	exports.MQTTHandle = MQTTHandle;
 
-/***/ },
+/***/ }),
 /* 25 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 
@@ -6763,9 +6769,9 @@
 
 	exports.Search = Search;
 
-/***/ },
+/***/ }),
 /* 26 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -6933,9 +6939,9 @@
 
 	exports.ImportExport = ImportExport;
 
-/***/ },
+/***/ }),
 /* 27 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 
@@ -7130,9 +7136,9 @@
 
 	exports.Parser = Parser;
 
-/***/ },
+/***/ }),
 /* 28 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -7372,9 +7378,9 @@
 
 	exports.UserConfigurationView = UserConfigurationView;
 
-/***/ },
+/***/ }),
 /* 29 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -7412,7 +7418,7 @@
 	         * converts a value & unit combination of a timeinterval to a count of milliseconds
 	         * @param {int} value the count of <units>
 	         * @param {int} unit_const the constant for a timeunit
-	         * @return {int} the count of milliseconds
+	         * @return {int} the count of milliseconds 
 	         */
 	        value: function _getMilliseconds(value, unit_const) {
 	            switch (unit_const) {
@@ -7532,9 +7538,9 @@
 
 	exports.DataQueryObserverProxy = DataQueryObserverProxy;
 
-/***/ },
+/***/ }),
 /* 30 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -7560,7 +7566,7 @@
 
 	/**
 	 * manages DataQuerySynchronizing
-	 *
+	 * 
 	 * This class has the following properties:
 	 * syncFreq                     -- the frequency with which the DataObserver works
 	 * queryIDcounter               -- the QueryID counter
@@ -7569,7 +7575,7 @@
 	 * myTimer                      -- the timer to start new querying batches
 	 * mySensorThingsCommunication  --reference to SensorThingsCommunications
 	 * myDataQuerySynchronizing     --reference to DataQuerySynchronizing
-	 *
+	 * 
 	 */
 
 	var DataObserver = (function () {
@@ -7684,7 +7690,7 @@
 	            return this.syncFreq;
 	        }
 
-	        /**
+	        /** 
 	         * performs one sync of the currently "expired" Data
 	         * @private
 	         */
@@ -7709,9 +7715,9 @@
 
 	exports.DataObserver = DataObserver;
 
-/***/ },
+/***/ }),
 /* 31 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -7733,7 +7739,7 @@
 
 	var logging = false;
 
-	/**
+	/** 
 	 * Synchronizes the Queries to the SensorThingsServer to prevent unneccesary Traffic.
 	 *
 	 * This class has the following properties:
@@ -7802,7 +7808,7 @@
 	        /**
 	         * add the missing Parameters to the ParameterList
 	         * @params params {Array} the parameterList to autocomplete
-	         * @returns {Array} the completed parameterList
+	         * @returns {Array} the completed parameterList 
 	         * @private
 	         */
 	    }, {
@@ -7974,9 +7980,9 @@
 
 	exports.DataQuerySynchronizing = DataQuerySynchronizing;
 
-/***/ },
+/***/ }),
 /* 32 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -8128,9 +8134,9 @@
 
 	exports.MQTTQuery = MQTTQuery;
 
-/***/ },
+/***/ }),
 /* 33 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -8377,11 +8383,11 @@
 
 	exports.TimedQuery = TimedQuery;
 
-/***/ },
+/***/ }),
 /* 34 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
-	/**
+	/** 
 	 * a Query which only generates random Data.
 	 * only for internal & testing purposes
 	 *
@@ -8389,7 +8395,7 @@
 	 * interval         -- the Time between 2 Querys
 	 * lastCalled       -- the Time since Jan,1,1970 of the last Query
 	 * callback         -- the Callback to write the Data
-	 *
+	 * 
 	 */
 	"use strict";
 
@@ -8403,7 +8409,7 @@
 
 	var RandomDataQuery = (function () {
 
-	    /**
+	    /** 
 	     * @param myParameterMap the ParameterMap
 	     * @param myCallback the callback to refresh the Data in the Datamodel
 	     */
@@ -8566,9 +8572,9 @@
 
 	exports.RandomDataQuery = RandomDataQuery;
 
-/***/ },
+/***/ }),
 /* 35 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -8803,9 +8809,9 @@
 
 	exports.PlainTextWidgetData = PlainTextWidgetData;
 
-/***/ },
+/***/ }),
 /* 36 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -8901,9 +8907,9 @@
 
 	exports.DashboardConfig = DashboardConfig;
 
-/***/ },
+/***/ }),
 /* 37 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -9391,9 +9397,9 @@
 
 	exports.GaugeWidgetData = GaugeWidgetData;
 
-/***/ },
+/***/ }),
 /* 38 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -9827,9 +9833,9 @@
 
 	exports.BarGraphData = BarGraphData;
 
-/***/ },
+/***/ }),
 /* 39 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -9964,12 +9970,16 @@
 	                },
 
 	                titleXaxis: {
-	                    data: 'Time in sec',
+	                    data: 'Time',
 	                    type: TYPE_STRING
 	                },
 	                titleYaxis: {
-	                    data: 'New 9gag memes',
+	                    data: 'Y-Axis',
 	                    type: TYPE_STRING
+	                },
+	                ymin: {
+	                    data: 0,
+	                    type: TYPE_NUMBER
 	                },
 	                pointColor: {
 	                    data: '#000000',
@@ -10294,9 +10304,9 @@
 
 	exports.LineGraphWidgetData = LineGraphWidgetData;
 
-/***/ },
+/***/ }),
 /* 40 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -10661,9 +10671,9 @@
 
 	exports.PlainDataWidgetData = PlainDataWidgetData;
 
-/***/ },
+/***/ }),
 /* 41 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -11061,9 +11071,9 @@
 
 	exports.ThermometerWidgetData = ThermometerWidgetData;
 
-/***/ },
+/***/ }),
 /* 42 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -11452,5 +11462,5 @@
 
 	exports.TrafficLightWidgetData = TrafficLightWidgetData;
 
-/***/ }
+/***/ })
 /******/ ]);

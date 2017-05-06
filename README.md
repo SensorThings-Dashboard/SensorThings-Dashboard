@@ -17,6 +17,7 @@ A live demo is available on the [project page](https://sensorthings-dashboard.gi
 A demo of an integration of this dashboard can be found in the [public](https://github.com/IoT-WebDashboard/IoT-WebDashboard/tree/master/public) folder. You will still need to download RGraph for this to work (more on this later)!
 
 You need following files and folders:
+ - *iotwebdashboard.html* | The structure for the dashboard
  - *iotwebdashboard.js* | The code for the dashboard
  - *iotwebdashboard.css* | The style files for the dashboard
  - *res* | The folder containing all images used by the dashboard
@@ -38,11 +39,11 @@ As you can see in the demo, there are CDNs for every dependency except RGraph. Y
 
 ## Embedding the dashboard ##
 
+The dashboard will be plotted into the `div` with `id=iot-db`.
 The dashboard is accessed via the `window.iotDB` variable.
 
 This variable provides the following functions:
 - `create(Object)`: The function to instanciate the dashboard. There should only be one dashboard instance per site. The passed Object can have the following attributes:
-    - (required) String `id`: The id of the div tag the dashboard should be created into. The dimensions of the div will not be changed
     - Boolean `disableImportExportCMS`: Disable the user's ability to import/export his dashboard-configuration from/into a CMS. Defaults to false
     - Boolean `disableDownloadUpload`: Disable the user's ability to download/upload his dashboard-configuration to/from his local PC. Defaults to false
     - Boolean `disableConfiguration`: Disable the user's ability to change the dashboard (including servers, widgets and their placement). Defaults to false

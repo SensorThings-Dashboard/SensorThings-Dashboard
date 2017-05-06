@@ -68,7 +68,7 @@ window.iotDB = {
         if (cf.language == null) {
             cf.language = "en";
         }
-
+        cf.id = "iot-db";
         new View(cf.id, cf.backgroundTransparent, cf.disableConfiguration,
             cf.disableImportExportCMS, cf.disableDownloadUpload,
             cf.enableNoDistraction, cf.language, window.iotDB.onLoad);

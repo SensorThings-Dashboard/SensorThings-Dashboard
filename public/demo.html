@@ -51,7 +51,7 @@
 <body>
 <h1>Host Seite</h1>
 <!-- We will plot the dashboard into this div -->
-<div id="iot-db">
+<div id="iot-db" style="margin-right: auto; margin-left: auto; width: 1000px; height: 800px;">
     <h3 id="headliner">IoT-WebDashboard</h3>
     <p>
         loading...
@@ -72,7 +72,6 @@
         iotDB.importUserConfig(userConfig);
     };
     iotDB.create({
-        "id": "iot-db",
         "disableImportExportCMS": false,
         "disableDownloadUpload": false,
         "disableConfiguration": false,

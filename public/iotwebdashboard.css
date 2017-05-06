@@ -1,9 +1,6 @@
 /* basic config */
 
 #iot-db {
-    width: 1000px;
-    height: 800px;
-    margin-left: 100px;
     overflow: visible;
     display: flex;
     background-color: lightgrey;
