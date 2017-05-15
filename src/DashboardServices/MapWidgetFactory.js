@@ -144,12 +144,14 @@ export class MapWidgetFactory {
             $(htmlIdSelector).find(".widget-title").text(window.iotlg.widgetMapTitle);
 
             // Set remove callback
-            $(htmlIdSelector).find("#removeWidgetButton").click(function() {
+            $(htmlIdSelector).find("#removeWidgetButton").click(function(e) {
+                e.preventDefault();
                 _userEvents.removeWidget(htmlId);
             });
 
             // Set config callback
-            $(htmlIdSelector).find("#configureWidgetButton").click(function() {
+            $(htmlIdSelector).find("#configureWidgetButton").click(function(e) {
+                e.preventDefault();
                 _userEvents.configureWidget(htmlId);
             });
 

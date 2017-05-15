@@ -97,7 +97,10 @@ export class View {
         $(".grid-stack").on("change", _userEvents.widgetChange);
 
         //Add all the onClick Listeners
-        $("#btn-configure").click(e => _userConfigurationView._toggleConfigure());
+        $("#btn-configure").click(function(e) {
+            e.preventDefault();
+            return _userConfigurationView._toggleConfigure();
+        });
         $("#addwidget_dropdown").ready(() => _view._loadDropdownItems());
         $("#conf_close").click(e => _userConfigurationView._toggleConfigure());
         $("#conf_save").click(e => _userConfigurationView._saveConfig());
@@ -105,7 +108,10 @@ export class View {
         $("#conf_download").click(e => _userConfigurationView._exportConfig());
         $("#conf_import").click(e => _userConfigurationView._importFromCMS());
         $("#conf_export").click(e => _userConfigurationView._exportToCMS());
-        $("#btn-no-distraction").click(() => _view._toggleDistraction());
+        $("#btn-no-distraction").click(function(e) {
+            e.preventDefault();
+            return _view._toggleDistraction();
+        });
 
         //Watch out for changes
         $("#conf-input-title").on('input', () => _userConfigurationView._setModified(true));
