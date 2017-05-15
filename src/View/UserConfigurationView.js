@@ -71,7 +71,10 @@ export class UserConfigurationView {
                 serverTable.append(_userConfigurationView._getServerTableRowDummy(server));
             });
             serverTable.append(_userConfigurationView._getServerTableAddRow());
-            $(".conf-btn-add-server").click(() => _userConfigurationView._addServer());
+            $(".conf-btn-add-server").click(function(e) {
+                e.preventDefault();
+                return _userConfigurationView._addServer();
+            });
             $(".tr-delete.close").click(e => _userConfigurationView._removeServer(e));
             conf.css("animationName", "animateIn");
             window.hideConfig = this._toggleConfigure.bind(this);

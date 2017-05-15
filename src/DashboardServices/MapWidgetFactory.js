@@ -119,6 +119,19 @@ export class MapWidgetFactory {
         let htmlId = "iotdbWidget" + id;
         let htmlIdSelector = `#${htmlId}`;
 
+        // set leaflet image path
+        L.Icon.Default.imagePath = window.iotBaseDir + 'res/LeafletImages/';
+
+        // create layer for geojson objects
+        let superLayer = L.geoJSON();
+
+        // add layer to the array of all layers of all maps
+        this.mapLayers.addLayer(superLayer);
+        this.mapIDs.push({
+            mapID: htmlId,
+            layerID: this.mapLayers.getLayerId(superLayer)
+        });
+
         //When html of widget is loaded, set up map in div
         $("#mapWidgetDiv").ready(() => {
 
@@ -131,51 +144,48 @@ export class MapWidgetFactory {
             $(htmlIdSelector).find(".widget-title").text(window.iotlg.widgetMapTitle);
 
             // Set remove callback
-            $(htmlIdSelector).find("#removeWidgetButton").click(function() {
+            $(htmlIdSelector).find("#removeWidgetButton").click(function(e) {
+                e.preventDefault();
                 _userEvents.removeWidget(htmlId);
             });
 
             // Set config callback
-            $(htmlIdSelector).find("#configureWidgetButton").click(function() {
+            $(htmlIdSelector).find("#configureWidgetButton").click(function(e) {
+                e.preventDefault();
                 _userEvents.configureWidget(htmlId);
             });
-
-            // set leaflet image path
-            L.Icon.Default.imagePath = window.iotBaseDir + 'res/LeafletImages/';
 
             //the DOM-Element to display the time of the last Update
             let lastUpdate = $(`#${htmlId}-lastUpdate`)[0];
 
-            // initialize a new map centered to the Karlsruhe Palace with a zoom level of 13
-            let map = L.map(htmlId + '-div').setView([49.014, 8.404], 13);
+            // Try to initialize a map. This will fail if there is no HTML
+            // component.
+            let map = undefined;
+            let tiles = undefined;
+            try {
+                // initialize a new map centered to the Karlsruhe Palace with a zoom level of 13
+                map = L.map(htmlId + '-div').setView([49.014, 8.404], 13);
 
-            $("#" + htmlId).parent().resize(() => setTimeout(function() {
-                map.invalidateSize();
-            }, 200));
+                $("#" + htmlId).parent().resize(() => setTimeout(function() {
+                    map.invalidateSize();
+                }, 200));
 
-            // disable map dragging because it interferes with widget dragging, navigation is still possible with arrow keys
-            map.dragging.disable();
+                // disable map dragging because it interferes with widget dragging, navigation is still possible with arrow keys
+                map.dragging.disable();
 
-            map.on('popupopen', function(e) {});
+                map.on('popupopen', function(e) {});
 
-            // create map tiles and add them to the map
-            let tiles = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoidmV4dXJ5IiwiYSI6ImNpd3R2ZzY5djAwbzcydXFyazRsam80cDAifQ.TaIW3pR4RS3UuyZg61HV6g', {
-                attribution: "Map data &copy; <a href='http://openstreetmap.org'>OpenStreetMap</a> contributors, <a href='http://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>, Imagery © <a href='http://mapbox.com'>Mapbox</a>"
-            });
-            tiles.addTo(map);
+                // create map tiles and add them to the map
+                tiles = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoidmV4dXJ5IiwiYSI6ImNpd3R2ZzY5djAwbzcydXFyazRsam80cDAifQ.TaIW3pR4RS3UuyZg61HV6g', {
+                    attribution: "Map data &copy; <a href='http://openstreetmap.org'>OpenStreetMap</a> contributors, <a href='http://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>, Imagery © <a href='http://mapbox.com'>Mapbox</a>"
+                });
+                tiles.addTo(map);
+                map.addLayer(superLayer);
+            } catch (err) {
+            }
 
             let markerTypes = [];
             let thresholds = [];
-
-            // create layer for geojson objects
-            let superLayer = L.geoJSON().addTo(map);
-
-            // add layer to the array of all layers of all maps
-            this.mapLayers.addLayer(superLayer);
-            this.mapIDs.push({
-                mapID: htmlId,
-                layerID: this.mapLayers.getLayerId(superLayer)
-            });
 
             // predefine traffic light marker icons for the three states
             let greenTrafficLight = L.icon({
@@ -196,7 +206,9 @@ export class MapWidgetFactory {
                 superLayer.clearLayers();
 
                 // update last update text
-                lastUpdate.innerText = window.iotlg.widgetLastUpdate + ": " + _widgetFactory.getCurrentTimePretty();
+                if (lastUpdate !== undefined) {
+                    lastUpdate.innerText = window.iotlg.widgetLastUpdate + ": " + _widgetFactory.getCurrentTimePretty();
+                }
 
                 for (let i = 0; i < data.length; i++) {
                     // check for undefined thing location within data
@@ -341,13 +353,21 @@ export class MapWidgetFactory {
                 // format config properly
                 config = this._formatConfigurableData(config);
                 html.find(".widget-title")[0].innerText = config.title.data;
+                // Make the title available for direct users of the layer.
+                if (superLayer.setTitle) {
+                    superLayer.setTitle(config.title.data);
+                } else {
+                    superLayer.iotTitle = config.title.data;
+                }
 
-                // extract basic map options and set them
-                map.setView(L.latLng(config.latitude.data, config.longitude.data), config.zoom.data);
-                map.removeLayer(tiles);
-                tiles = L.tileLayer(config.mapURL.data, {
-                    attribution: config.attribution.data
-                }).addTo(map);
+                // extract basic map options and set them, if we have a map.
+                if (map !== undefined) {
+                    map.setView(L.latLng(config.latitude.data, config.longitude.data), config.zoom.data);
+                    map.removeLayer(tiles);
+                    tiles = L.tileLayer(config.mapURL.data, {
+                        attribution: config.attribution.data
+                    }).addTo(map);
+                }
 
                 // extract marker type and color ranges from the config and save them
                 for (let i = 0; i < config.sensorThingsConfiguration.data.length; i++) {

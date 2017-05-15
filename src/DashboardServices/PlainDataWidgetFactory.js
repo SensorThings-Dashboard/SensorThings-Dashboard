@@ -108,12 +108,14 @@ export class PlainDataWidgetFactory {
             html.find(htmlIdSelector).find(".widget-title").text(window.iotlg.widgetPlainTextTitle);
 
             // Set remove callback
-            html.find(htmlIdSelector).find("#removeWidgetButton").click(function() {
+            html.find(htmlIdSelector).find("#removeWidgetButton").click(function(e) {
+                e.preventDefault();
                 _userEvents.removeWidget(htmlId);
             });
 
             // Set config callback
-            html.find(htmlIdSelector).find("#configureWidgetButton").click(function() {
+            html.find(htmlIdSelector).find("#configureWidgetButton").click(function(e) {
+                e.preventDefault();
                 _userEvents.configureWidget(htmlId);
             });
 
