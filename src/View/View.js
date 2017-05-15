@@ -204,6 +204,9 @@ export class View {
      * @param {int} height height of the widget
      **/
     addWidgetAtPosition(id, html, x, y, width, height) {
+        if (_view._gridstack === undefined) {
+            return;
+        }
         // Add Widget to gridstack
         _view._gridstack.addWidget(html, x, y, width, height);
 
